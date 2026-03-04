@@ -15,8 +15,9 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-	title: "Тагай & Мээрим — 5 апреля",
-	description: "Свадебное приглашение",
+	title: "Приглашение на свадьбу",
+	description: "Свадебное приглашение · Бишкек · Банкетный зал UNO",
+	themeColor: "#fce0e8",
 };
 
 export default function RootLayout({
@@ -26,6 +27,15 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang="ru" className={`${greatVibes.variable} ${cormorant.variable}`}>
+			<head>
+				{/* Цвет интерфейса Chrome/Safari */}
+				<meta name="theme-color" content="#fce0e8" />
+				<meta name="apple-mobile-web-app-capable" content="yes" />
+				<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+
+				{/* Favicon — эмодзи кольца, не нужен файл */}
+				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+			</head>
 			<body>{children}</body>
 		</html>
 	);

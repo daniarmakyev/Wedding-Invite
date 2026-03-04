@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+
+  <!-- фон -->
+  <circle cx="50" cy="50" r="50" fill="#fdeef4"/>
+
+  <!-- золотые кольца -->
+  <circle cx="50" cy="50" r="46" fill="none" stroke="#c9a96e" stroke-width="2"/>
+  <circle cx="50" cy="50" r="38" fill="none" stroke="#c9a96e" stroke-width="0.7" opacity="0.5"/>
+
+  <!-- точки-орнамент -->
+  <circle cx="50" cy="5"  r="2.8" fill="#c9a96e"/>
+  <circle cx="50" cy="95" r="2.8" fill="#c9a96e"/>
+  <circle cx="5"  cy="50" r="2.8" fill="#c9a96e"/>
+  <circle cx="95" cy="50" r="2.8" fill="#c9a96e"/>
+
+  <!-- внешние лепестки -->
+  <ellipse cx="50" cy="33" rx="5.5" ry="9" fill="#f5c0ce" opacity="0.9"/>
+  <ellipse cx="50" cy="33" rx="5.5" ry="9" fill="#f5c0ce" opacity="0.9" transform="rotate(45 50 44)"/>
+  <ellipse cx="50" cy="33" rx="5.5" ry="9" fill="#f0afc0" opacity="0.9" transform="rotate(90 50 44)"/>
+  <ellipse cx="50" cy="33" rx="5.5" ry="9" fill="#f0afc0" opacity="0.9" transform="rotate(135 50 44)"/>
+  <ellipse cx="50" cy="33" rx="5.5" ry="9" fill="#eaa0b5" opacity="0.9" transform="rotate(180 50 44)"/>
+  <ellipse cx="50" cy="33" rx="5.5" ry="9" fill="#eaa0b5" opacity="0.9" transform="rotate(225 50 44)"/>
+  <ellipse cx="50" cy="33" rx="5.5" ry="9" fill="#e090a8" opacity="0.9" transform="rotate(270 50 44)"/>
+  <ellipse cx="50" cy="33" rx="5.5" ry="9" fill="#e090a8" opacity="0.9" transform="rotate(315 50 44)"/>
+
+  <!-- средние лепестки -->
+  <ellipse cx="50" cy="37" rx="4" ry="7" fill="#d97898" transform="rotate(22  50 44)"/>
+  <ellipse cx="50" cy="37" rx="4" ry="7" fill="#d97898" transform="rotate(67  50 44)"/>
+  <ellipse cx="50" cy="37" rx="4" ry="7" fill="#cf6888" transform="rotate(112 50 44)"/>
+  <ellipse cx="50" cy="37" rx="4" ry="7" fill="#cf6888" transform="rotate(157 50 44)"/>
+  <ellipse cx="50" cy="37" rx="4" ry="7" fill="#c55878" transform="rotate(202 50 44)"/>
+  <ellipse cx="50" cy="37" rx="4" ry="7" fill="#c55878" transform="rotate(247 50 44)"/>
+  <ellipse cx="50" cy="37" rx="4" ry="7" fill="#bd4868" transform="rotate(292 50 44)"/>
+  <ellipse cx="50" cy="37" rx="4" ry="7" fill="#bd4868" transform="rotate(337 50 44)"/>
+
+  <!-- сердцевина -->
+  <circle cx="50" cy="44" r="7" fill="#c96880"/>
+  <circle cx="50" cy="44" r="4.5" fill="#b04060"/>
+  <circle cx="50" cy="44" r="2.5" fill="#8a2840"/>
+  <circle cx="48.5" cy="42.5" r="1" fill="#d97898" opacity="0.7"/>
+
+  <!-- год снизу -->
+  <text x="50" y="80" font-family="Georgia,serif" font-size="10" fill="#c9a96e" text-anchor="middle" letter-spacing="2" font-weight="bold">2026</text>
+
+</svg>
