@@ -615,7 +615,7 @@ const GoldOrb = ({
 const MapEmbed = () => {
 	const LAT = 42.833421;
 	const LON = 74.542202;
-	const ZOOM = 16.39;
+	const ZOOM = 15.39;
 
 	const html = `<!DOCTYPE html>
 <html>
@@ -657,8 +657,8 @@ const MapEmbed = () => {
 <body>
 <div id="map"></div>
 <script>
-var map = L.map('map', { zoomControl: true, scrollWheelZoom: false, attributionControl: true }).setView([${LAT}, ${LON}], ${ZOOM});
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap', maxZoom: 19 }).addTo(map);
+var map = L.map('map', { zoomControl: true, scrollWheelZoom: false, attributionControl: false }).setView([${LAT}, ${LON}], ${ZOOM});
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
 var pinIcon = L.divIcon({ className: 'custom-pin', html: '<div class="pin-inner"><div class="pin-dot"></div></div>', iconSize: [36,36], iconAnchor: [18,36], popupAnchor: [0,-38] });
 L.marker([${LAT}, ${LON}], { icon: pinIcon }).addTo(map).bindPopup('<div class="popup-title">Банкетный зал UNO</div><div class="popup-gold">Бишкек · 5 апреля 2026</div>').openPopup();
 </script>
