@@ -1,26 +1,132 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--font-script: "Great Vibes", cursive;
+	--font-body: "Cormorant Garamond", serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+	scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+	font-family: var(--font-body);
+	font-weight: 500;
+	background: #fdf8f2;
+	color: #c96880;
+	overflow-x: hidden;
+	font-size: 112.5%;
+}
+
+.font-script {
+	font-family: var(--font-script);
+}
+.font-body {
+	font-family: var(--font-body);
+}
+
+::-webkit-scrollbar {
+	width: 3px;
+}
+::-webkit-scrollbar-track {
+	background: #fdeef2;
+}
+::-webkit-scrollbar-thumb {
+	background: #c9a96e;
+	border-radius: 2px;
+}
+
+@keyframes petalFall {
+	0% {
+		transform: translateY(-20px) rotate(0deg) translateX(0px);
+		opacity: 0;
+	}
+	5% {
+		opacity: 0.5;
+	}
+	90% {
+		opacity: 0.3;
+	}
+	100% {
+		transform: translateY(105vh) rotate(380deg) translateX(40px);
+		opacity: 0;
+	}
+}
+
+@keyframes sparkleRise {
+	0% {
+		transform: translateY(0px) scale(1);
+		opacity: 0;
+	}
+	15% {
+		opacity: 0.7;
+	}
+	85% {
+		opacity: 0.4;
+	}
+	100% {
+		transform: translateY(-105vh) scale(0.3);
+		opacity: 0;
+	}
+}
+@keyframes goldShimmer {
+	0% {
+		background-position: -200% center;
+	}
+	100% {
+		background-position: 200% center;
+	}
+}
+@keyframes rotateSlow {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+@keyframes pulseGlow {
+	0%,
+	100% {
+		opacity: 0.5;
+	}
+	50% {
+		opacity: 1;
+	}
+}
+@keyframes floatY {
+	0%,
+	100% {
+		transform: translateY(0px);
+	}
+	50% {
+		transform: translateY(-10px);
+	}
+}
+
+.petal {
+	position: fixed;
+	pointer-events: none;
+	z-index: 1;
+	animation: petalFall linear infinite;
+}
+.gold-shimmer-text {
+	background: linear-gradient(
+		90deg,
+		#a07840,
+		#e8d5a3,
+		#c9a96e,
+		#e8d5a3,
+		#a07840
+	);
+	background-size: 200% auto;
+	-webkit-background-clip: text;
+	background-clip: text;
+	-webkit-text-fill-color: transparent;
+	animation: goldShimmer 4s linear infinite;
 }
