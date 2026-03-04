@@ -926,7 +926,7 @@ export default function Home() {
 										className="font-script name-shimmer"
 										style={{
 											fontSize: "clamp(5rem,15vw,10.5rem)",
-											lineHeight: 0.95,
+											lineHeight: 1.3,
 											marginTop: "12px",
 										}}
 									>
