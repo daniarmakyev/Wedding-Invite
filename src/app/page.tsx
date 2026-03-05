@@ -1375,7 +1375,7 @@ export default function Home() {
 										},
 										{
 											title: "Время",
-											desc: "Сбор гостей в 17:00\nЦеремония в 18:00",
+											desc: "Церемония в 18:00",
 											icon: (
 												<svg
 													width="44"
@@ -1445,7 +1445,7 @@ export default function Home() {
 										},
 										{
 											title: "Место",
-											desc: "Банкетный зал UNO\nБишкек",
+											desc: "Банкетный зал UNO\nБишкек | Улица Камбар-Ата, 75",
 											icon: (
 												<svg
 													width="44"
