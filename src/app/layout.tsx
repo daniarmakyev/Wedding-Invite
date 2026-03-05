@@ -15,9 +15,28 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-	title: "Приглашение на свадьбу",
-	description: "Свадебное приглашение · Бишкек · Банкетный зал UNO",
+	title: "Приглашение на свадьбу Тагая и Мээрим",
+	description:
+		"С большой любовью приглашаем вас на нашу свадьбу! 5 апреля 2026 • Бишкек • Банкетный зал UNO",
 	themeColor: "#fce0e8",
+
+	openGraph: {
+		title: "Приглашение на свадьбу Тагая и Мээрим 💍",
+		description:
+			"5 апреля 2026 • Бишкек • Банкетный зал UNO. Ждём вас с нетерпением! 🌸",
+		url: "https://svadba-ecru-two.vercel.app/",
+		siteName: "Свадьба Тагая и Мээрим",
+		images: [
+			{
+				url: "weding.webp",
+				width: 1200,
+				height: 630,
+				alt: "Свадебное приглашение Тагая и Мээрим",
+			},
+		],
+		locale: "ru_RU",
+		type: "website",
+	},
 };
 
 export default function RootLayout({
