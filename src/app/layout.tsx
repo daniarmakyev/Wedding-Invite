@@ -16,11 +16,11 @@ const cormorant = Cormorant_Garamond({
 
 export const viewport: Viewport = {
 	themeColor: "#fce0e8",
-	colorScheme: "light",
+	colorScheme: "only light",
 };
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://svadba-ecru-two.vercel.app"),
+	metadataBase: new URL("https://toy-ashy.vercel.app"),
 	title: "Тагай менен Мээримдин үйлөнүү тоюна чакыруусу 💍",
 	description:
 		"Сүйүү менен тоюбузга чакырабыз! 5-апрель 2026 • Бишкек • UNO банкет залы",
@@ -28,11 +28,11 @@ export const metadata: Metadata = {
 		title: "Тагай менен Мээримдин үйлөнүү тоюна чакыруу 💍",
 		description:
 			"5-апрель 2026 • Бишкек • UNO банкет залы. Сизди күтүп жатабыз! 🌸",
-		url: "https://svadba-ecru-two.vercel.app/",
+		url: "https://toy-ashy.vercel.app/",
 		siteName: "Тагай менен Мээримдин тою",
 		images: [
 			{
-				url: "/weding.webp",
+				url: "https://toy-ashy.vercel.app/weding.webp",
 				width: 1200,
 				height: 630,
 				alt: "Тагай менен Мээримдин үйлөнүү той чакыруусу",
