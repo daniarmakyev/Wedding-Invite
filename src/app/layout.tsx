@@ -28,7 +28,7 @@ export const metadata: Metadata = {
 		siteName: "Свадьба Тагая и Мээрим",
 		images: [
 			{
-				url: "weding.webp",
+				url: "/weding.webp",
 				width: 1200,
 				height: 630,
 				alt: "Свадебное приглашение Тагая и Мээрим",
