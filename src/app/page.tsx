@@ -615,7 +615,7 @@ const GoldOrb = ({
 const MapEmbed = () => {
 	const LAT = 42.833421;
 	const LON = 74.542202;
-	const ZOOM = 15.39;
+	const ZOOM = 18; // чуть выше для детализации
 
 	const html = `<!DOCTYPE html>
 <html>
@@ -627,40 +627,62 @@ const MapEmbed = () => {
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body, #map { width:100%; height:100%; }
-  .leaflet-tile-pane { filter: saturate(0.7) sepia(0.15) hue-rotate(310deg) brightness(1.05); }
+  
+  /* УБРАЛИ старый фильтр — он и давал размытие */
+  .leaflet-tile-pane img {
+    image-rendering: crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+  }
+  
+  .leaflet-container {
+    background: #f8f1e9 !important;
+  }
+  
   .custom-pin { background: none; border: none; }
   .pin-inner {
     width: 36px; height: 36px; border-radius: 50% 50% 50% 0;
     background: linear-gradient(135deg, #c96880, #e8a0b0);
     transform: rotate(-45deg);
-    border: 2px solid #fff;
-    box-shadow: 0 4px 16px rgba(201,104,128,0.5);
+    border: 3px solid #fff;
+    box-shadow: 0 6px 20px rgba(201,104,128,0.6);
     display: flex; align-items: center; justify-content: center;
   }
-  .pin-dot { width: 10px; height: 10px; border-radius: 50%; background: #fff; transform: rotate(45deg); }
+  .pin-dot { width: 12px; height: 12px; border-radius: 50%; background: #fff; transform: rotate(45deg); }
+  
   .leaflet-popup-content-wrapper {
-    border-radius: 4px !important;
-    border: 1px solid rgba(201,169,110,0.4) !important;
-    box-shadow: 0 8px 32px rgba(201,104,128,0.2) !important;
-    font-family: Georgia, serif !important;
-    padding: 0 !important;
+    border-radius: 8px !important;
+    border: 2px solid rgba(201,169,110,0.5) !important;
+    box-shadow: 0 12px 40px rgba(201,104,128,0.25) !important;
   }
-  .leaflet-popup-content { margin: 0 !important; padding: 8px 12px !important; font-size: 11px !important; color: #8a5a40 !important; line-height: 1.5 !important; }
-  .popup-title { font-size: 12px; color: #c96880; font-weight: 600; margin-bottom: 2px; }
-  .popup-gold { color: #c9a96e; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; }
-  .leaflet-popup-tip { background: #fff !important; }
-  .leaflet-control-zoom a { border: 1px solid rgba(201,169,110,0.4) !important; color: #c9a96e !important; font-size: 16px !important; }
-  .leaflet-control-zoom a:hover { background: rgba(201,169,110,0.1) !important; }
-  .leaflet-attribution-flag { display: none !important; }
 </style>
 </head>
 <body>
 <div id="map"></div>
 <script>
-var map = L.map('map', { zoomControl: true, scrollWheelZoom: false, attributionControl: false }).setView([${LAT}, ${LON}], ${ZOOM});
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19 }).addTo(map);
-var pinIcon = L.divIcon({ className: 'custom-pin', html: '<div class="pin-inner"><div class="pin-dot"></div></div>', iconSize: [36,36], iconAnchor: [18,36], popupAnchor: [0,-38] });
-L.marker([${LAT}, ${LON}], { icon: pinIcon }).addTo(map).bindPopup('<div class="popup-title">Банкетный зал UNO</div><div class="popup-gold">Бишкек · 5 апреля 2026</div>').openPopup();
+var map = L.map('map', { 
+  zoomControl: true, 
+  scrollWheelZoom: false, 
+  attributionControl: false 
+}).setView([${LAT}, ${LON}], ${ZOOM});
+
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  maxZoom: 22,
+  detectRetina: true,        
+  tileSize: 256
+}).addTo(map);
+
+var pinIcon = L.divIcon({ 
+  className: 'custom-pin', 
+  html: '<div class="pin-inner"><div class="pin-dot"></div></div>', 
+  iconSize: [40,40], 
+  iconAnchor: [20,40], 
+  popupAnchor: [0,-42] 
+});
+
+L.marker([${LAT}, ${LON}], { icon: pinIcon })
+  .addTo(map)
+  .bindPopup('<div style="font-family:Georgia,serif;color:#5c3d4f">Банкетный зал <strong>UNO</strong><br>Камбар-Ата, 75</div>')
+  .openPopup();
 </script>
 </body>
 </html>`;
@@ -672,9 +694,10 @@ L.marker([${LAT}, ${LON}], { icon: pinIcon }).addTo(map).bindPopup('<div class="
 			style={{
 				border: 0,
 				display: "block",
-				height: "clamp(280px, 55vw, 600px)",
+				height: "clamp(320px, 62vw, 680px)", // чуть выше для лучшей детализации
+				borderRadius: "3px",
 			}}
-			title="Банкетный зал UNO"
+			title="Банкетный зал UNO — карта"
 		/>
 	);
 };
