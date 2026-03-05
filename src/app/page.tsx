@@ -528,7 +528,7 @@ const MonogramCircle = () => {
 				<span
 					style={{
 						fontFamily: "var(--font-body)",
-						fontSize: "clamp(0.5rem,1vw,0.65rem)",
+						fontSize: "clamp(0.8rem,1vw,0.65rem)",
 						letterSpacing: "0.3em",
 						color: "#c9a96e",
 						textTransform: "uppercase",
@@ -1277,327 +1277,331 @@ export default function Home() {
 									<GoldDivider />
 								</Reveal>
 
-								<div
-									style={{
-										maxWidth: "980px",
-										margin: "clamp(28px,5vw,52px) auto 0",
-										display: "grid",
-										gridTemplateColumns: "repeat(3, 1fr)",
-										alignItems: "stretch",
-										gap: "clamp(16px,2.5vw,28px)",
-									}}
-								>
-									{[
-										{
-											title: "Куну",
-											desc: "5-апрель 2026\nШейшемби",
-											icon: (
-												<svg
-													width="44"
-													height="44"
-													viewBox="0 0 44 44"
-													fill="none"
-												>
-													<rect
-														x="4"
-														y="8"
-														width="36"
-														height="32"
-														rx="3"
-														stroke="#c9a96e"
-														strokeWidth="1.1"
-													/>
-													<line
-														x1="4"
-														y1="18"
-														x2="40"
-														y2="18"
-														stroke="#c9a96e"
-														strokeWidth="0.8"
-													/>
-													<line
-														x1="14"
-														y1="4"
-														x2="14"
-														y2="12"
-														stroke="#c9a96e"
-														strokeWidth="1.5"
-														strokeLinecap="round"
-													/>
-													<line
-														x1="30"
-														y1="4"
-														x2="30"
-														y2="12"
-														stroke="#c9a96e"
-														strokeWidth="1.5"
-														strokeLinecap="round"
-													/>
-													<rect
-														x="15"
-														y="25"
-														width="6"
-														height="6"
-														rx="1"
-														fill="#c9a96e"
-														opacity="0.8"
-													/>
-													<rect
-														x="23"
-														y="25"
-														width="6"
-														height="6"
-														rx="1"
-														fill="#c9a96e"
-														opacity="0.35"
-													/>
-													<rect
-														x="15"
-														y="33"
-														width="6"
-														height="3"
-														rx="1"
-														fill="#c9a96e"
-														opacity="0.25"
-													/>
-												</svg>
-											),
-										},
-										{
-											title: "Убактысы",
-											desc: "Башталышы 17:00дө",
-											icon: (
-												<svg
-													width="44"
-													height="44"
-													viewBox="0 0 44 44"
-													fill="none"
-												>
-													<circle
-														cx="22"
-														cy="22"
-														r="18"
-														stroke="#c9a96e"
-														strokeWidth="1.1"
-													/>
-													<circle
-														cx="22"
-														cy="22"
-														r="13"
-														stroke="#c9a96e"
-														strokeWidth="0.5"
-														opacity="0.3"
-													/>
-													{[
-														0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300,
-														330,
-													].map((a, i) => (
-														<line
-															key={i}
-															x1={22 + 15 * Math.cos((a * Math.PI) / 180)}
-															y1={22 + 15 * Math.sin((a * Math.PI) / 180)}
-															x2={
-																22 +
-																(i % 3 === 0 ? 17.5 : 16.5) *
-																	Math.cos((a * Math.PI) / 180)
-															}
-															y2={
-																22 +
-																(i % 3 === 0 ? 17.5 : 16.5) *
-																	Math.sin((a * Math.PI) / 180)
-															}
-															stroke="#c9a96e"
-															strokeWidth={i % 3 === 0 ? 1 : 0.6}
-															opacity="0.6"
-														/>
-													))}
-													<line
-														x1="22"
-														y1="10"
-														x2="22"
-														y2="22"
-														stroke="#c9a96e"
-														strokeWidth="1.6"
-														strokeLinecap="round"
-													/>
-													<line
-														x1="22"
-														y1="22"
-														x2="30"
-														y2="27"
-														stroke="#c9a96e"
-														strokeWidth="1.3"
-														strokeLinecap="round"
-													/>
-													<circle cx="22" cy="22" r="2.2" fill="#c9a96e" />
-												</svg>
-											),
-										},
-										{
-											title: "Жери",
-											desc: "UNO банкет залы\nБишкек | Камбар-Ата көчөсу, 75",
-											icon: (
-												<svg
-													width="44"
-													height="44"
-													viewBox="0 0 44 44"
-													fill="none"
-												>
-													<path
-														d="M22 3C14 3 8 10 8 17C8 27 22 41 22 41C22 41 36 27 36 17C36 10 30 3 22 3Z"
-														stroke="#c9a96e"
-														strokeWidth="1.1"
-													/>
-													<circle
-														cx="22"
-														cy="17"
-														r="6"
-														stroke="#c9a96e"
-														strokeWidth="1"
-													/>
-													<circle
-														cx="22"
-														cy="17"
-														r="2.5"
-														fill="#c9a96e"
-														opacity="0.8"
-													/>
-													<path
-														d="M22 3C22 3 24 8 28 8"
-														stroke="#c9a96e"
-														strokeWidth="0.6"
-														opacity="0.4"
-													/>
-												</svg>
-											),
-										},
-									].map(({ title, desc, icon }, i) => (
-										<Reveal key={title} delay={i * 0.14}>
-											<div
-												style={{
-													height: "100%",
-													background:
-														"linear-gradient(145deg, rgba(255,248,242,0.98), rgba(253,232,240,0.85))",
-													border: "1px solid rgba(201,169,110,0.3)",
-													borderRadius: "3px",
-													padding:
-														"clamp(32px,5vw,50px) clamp(24px,3.5vw,38px)",
-													position: "relative",
-													overflow: "hidden",
-													boxShadow:
-														"0 8px 40px rgba(201,104,128,0.09), 0 0 0 4px rgba(201,169,110,0.05)",
-													boxSizing: "border-box",
-												}}
-											>
-												<div
-													style={{
-														position: "absolute",
-														top: 0,
-														left: 0,
-														right: 0,
-														height: "2px",
-														background:
-															"linear-gradient(90deg, transparent, #c9a96e, transparent)",
-													}}
-												/>
-												<div
-													style={{
-														position: "absolute",
-														bottom: 0,
-														left: 0,
-														right: 0,
-														height: "1px",
-														background:
-															"linear-gradient(90deg, transparent, rgba(201,169,110,0.35), transparent)",
-													}}
-												/>
-												<div
-													style={{
-														position: "absolute",
-														top: "10px",
-														left: "10px",
-														opacity: 0.1,
-													}}
-												>
-													<FloralCorner
-														style={{ width: "60px", height: "60px" }}
-													/>
-												</div>
-												<div
-													style={{
-														position: "absolute",
-														bottom: "10px",
-														right: "10px",
-														opacity: 0.1,
-													}}
-												>
-													<FloralCorner
-														style={{
-															width: "60px",
-															height: "60px",
-															transform: "scale(-1,-1)",
-														}}
-													/>
-												</div>
-												{[
-													{ top: "-4px", left: "-4px" },
-													{ top: "-4px", right: "-4px" },
-													{ bottom: "-4px", left: "-4px" },
-													{ bottom: "-4px", right: "-4px" },
-												].map((pos, j) => (
+								<Reveal>
+									<div
+										style={{
+											maxWidth: "980px",
+											margin: "clamp(28px,5vw,52px) auto 0",
+											display: "grid",
+											gridTemplateColumns:
+												"repeat(auto-fit, minmax(280px, 1fr))",
+											alignItems: "stretch",
+											gap: "clamp(16px,2.5vw,28px)",
+											flexWrap: "wrap",
+										}}
+									>
+										{[
+											{
+												title: "Куну",
+												desc: "5-апрель 2026\nШейшемби",
+												icon: (
 													<svg
-														key={j}
-														style={{
-															position: "absolute",
-															width: "10px",
-															height: "10px",
-															...pos,
-														}}
-														viewBox="0 0 10 10"
+														width="44"
+														height="44"
+														viewBox="0 0 44 44"
+														fill="none"
 													>
-														<path
-															d="M5,0 L5,10 M0,5 L10,5"
+														<rect
+															x="4"
+															y="8"
+															width="36"
+															height="32"
+															rx="3"
+															stroke="#c9a96e"
+															strokeWidth="1.1"
+														/>
+														<line
+															x1="4"
+															y1="18"
+															x2="40"
+															y2="18"
 															stroke="#c9a96e"
 															strokeWidth="0.8"
-															opacity="0.6"
+														/>
+														<line
+															x1="14"
+															y1="4"
+															x2="14"
+															y2="12"
+															stroke="#c9a96e"
+															strokeWidth="1.5"
+															strokeLinecap="round"
+														/>
+														<line
+															x1="30"
+															y1="4"
+															x2="30"
+															y2="12"
+															stroke="#c9a96e"
+															strokeWidth="1.5"
+															strokeLinecap="round"
+														/>
+														<rect
+															x="15"
+															y="25"
+															width="6"
+															height="6"
+															rx="1"
+															fill="#c9a96e"
+															opacity="0.8"
+														/>
+														<rect
+															x="23"
+															y="25"
+															width="6"
+															height="6"
+															rx="1"
+															fill="#c9a96e"
+															opacity="0.35"
+														/>
+														<rect
+															x="15"
+															y="33"
+															width="6"
+															height="3"
+															rx="1"
+															fill="#c9a96e"
+															opacity="0.25"
 														/>
 													</svg>
-												))}
+												),
+											},
+											{
+												title: "Убактысы",
+												desc: "Башталышы 17:00дө",
+												icon: (
+													<svg
+														width="44"
+														height="44"
+														viewBox="0 0 44 44"
+														fill="none"
+													>
+														<circle
+															cx="22"
+															cy="22"
+															r="18"
+															stroke="#c9a96e"
+															strokeWidth="1.1"
+														/>
+														<circle
+															cx="22"
+															cy="22"
+															r="13"
+															stroke="#c9a96e"
+															strokeWidth="0.5"
+															opacity="0.3"
+														/>
+														{[
+															0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300,
+															330,
+														].map((a, i) => (
+															<line
+																key={i}
+																x1={22 + 15 * Math.cos((a * Math.PI) / 180)}
+																y1={22 + 15 * Math.sin((a * Math.PI) / 180)}
+																x2={
+																	22 +
+																	(i % 3 === 0 ? 17.5 : 16.5) *
+																		Math.cos((a * Math.PI) / 180)
+																}
+																y2={
+																	22 +
+																	(i % 3 === 0 ? 17.5 : 16.5) *
+																		Math.sin((a * Math.PI) / 180)
+																}
+																stroke="#c9a96e"
+																strokeWidth={i % 3 === 0 ? 1 : 0.6}
+																opacity="0.6"
+															/>
+														))}
+														<line
+															x1="22"
+															y1="10"
+															x2="22"
+															y2="22"
+															stroke="#c9a96e"
+															strokeWidth="1.6"
+															strokeLinecap="round"
+														/>
+														<line
+															x1="22"
+															y1="22"
+															x2="30"
+															y2="27"
+															stroke="#c9a96e"
+															strokeWidth="1.3"
+															strokeLinecap="round"
+														/>
+														<circle cx="22" cy="22" r="2.2" fill="#c9a96e" />
+													</svg>
+												),
+											},
+											{
+												title: "Жери",
+												desc: "UNO банкет залы\nБишкек | Камбар-Ата көчөсу, 75",
+												icon: (
+													<svg
+														width="44"
+														height="44"
+														viewBox="0 0 44 44"
+														fill="none"
+													>
+														<path
+															d="M22 3C14 3 8 10 8 17C8 27 22 41 22 41C22 41 36 27 36 17C36 10 30 3 22 3Z"
+															stroke="#c9a96e"
+															strokeWidth="1.1"
+														/>
+														<circle
+															cx="22"
+															cy="17"
+															r="6"
+															stroke="#c9a96e"
+															strokeWidth="1"
+														/>
+														<circle
+															cx="22"
+															cy="17"
+															r="2.5"
+															fill="#c9a96e"
+															opacity="0.8"
+														/>
+														<path
+															d="M22 3C22 3 24 8 28 8"
+															stroke="#c9a96e"
+															strokeWidth="0.6"
+															opacity="0.4"
+														/>
+													</svg>
+												),
+											},
+										].map(({ title, desc, icon }, i) => (
+											<Reveal key={title} delay={i * 0.14}>
 												<div
 													style={{
-														marginBottom: "20px",
-														display: "flex",
-														justifyContent: "center",
+														height: "100%",
+														background:
+															"linear-gradient(145deg, rgba(255,248,242,0.98), rgba(253,232,240,0.85))",
+														border: "1px solid rgba(201,169,110,0.3)",
+														borderRadius: "3px",
+														padding:
+															"clamp(32px,5vw,50px) clamp(24px,3.5vw,38px)",
+														position: "relative",
+														overflow: "hidden",
+														boxShadow:
+															"0 8px 40px rgba(201,104,128,0.09), 0 0 0 4px rgba(201,169,110,0.05)",
+														boxSizing: "border-box",
 													}}
 												>
-													{icon}
+													<div
+														style={{
+															position: "absolute",
+															top: 0,
+															left: 0,
+															right: 0,
+															height: "2px",
+															background:
+																"linear-gradient(90deg, transparent, #c9a96e, transparent)",
+														}}
+													/>
+													<div
+														style={{
+															position: "absolute",
+															bottom: 0,
+															left: 0,
+															right: 0,
+															height: "1px",
+															background:
+																"linear-gradient(90deg, transparent, rgba(201,169,110,0.35), transparent)",
+														}}
+													/>
+													<div
+														style={{
+															position: "absolute",
+															top: "10px",
+															left: "10px",
+															opacity: 0.1,
+														}}
+													>
+														<FloralCorner
+															style={{ width: "60px", height: "60px" }}
+														/>
+													</div>
+													<div
+														style={{
+															position: "absolute",
+															bottom: "10px",
+															right: "10px",
+															opacity: 0.1,
+														}}
+													>
+														<FloralCorner
+															style={{
+																width: "60px",
+																height: "60px",
+																transform: "scale(-1,-1)",
+															}}
+														/>
+													</div>
+													{[
+														{ top: "-4px", left: "-4px" },
+														{ top: "-4px", right: "-4px" },
+														{ bottom: "-4px", left: "-4px" },
+														{ bottom: "-4px", right: "-4px" },
+													].map((pos, j) => (
+														<svg
+															key={j}
+															style={{
+																position: "absolute",
+																width: "10px",
+																height: "10px",
+																...pos,
+															}}
+															viewBox="0 0 10 10"
+														>
+															<path
+																d="M5,0 L5,10 M0,5 L10,5"
+																stroke="#c9a96e"
+																strokeWidth="0.8"
+																opacity="0.6"
+															/>
+														</svg>
+													))}
+													<div
+														style={{
+															marginBottom: "20px",
+															display: "flex",
+															justifyContent: "center",
+														}}
+													>
+														{icon}
+													</div>
+													<h3
+														className="font-script"
+														style={{
+															fontSize: "clamp(1.8rem,3.5vw,2.4rem)",
+															color: "#c96880",
+															marginBottom: "12px",
+														}}
+													>
+														{title}
+													</h3>
+													<p
+														style={{
+															fontFamily: "var(--font-body)",
+															color: "#b07888",
+															lineHeight: 1.9,
+															fontSize: "clamp(0.9rem,1.6vw,1rem)",
+															whiteSpace: "pre-line",
+															fontWeight: 300,
+														}}
+													>
+														{desc}
+													</p>
 												</div>
-												<h3
-													className="font-script"
-													style={{
-														fontSize: "clamp(1.8rem,3.5vw,2.4rem)",
-														color: "#c96880",
-														marginBottom: "12px",
-													}}
-												>
-													{title}
-												</h3>
-												<p
-													style={{
-														fontFamily: "var(--font-body)",
-														color: "#b07888",
-														lineHeight: 1.9,
-														fontSize: "clamp(0.9rem,1.6vw,1rem)",
-														whiteSpace: "pre-line",
-														fontWeight: 300,
-													}}
-												>
-													{desc}
-												</p>
-											</div>
-										</Reveal>
-									))}
-								</div>
+											</Reveal>
+										))}
+									</div>
+								</Reveal>
 
 								<div
 									style={{
