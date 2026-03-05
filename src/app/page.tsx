@@ -536,7 +536,7 @@ const MonogramCircle = () => {
 						zIndex: 1,
 					}}
 				>
-					2025
+					2026
 				</span>
 			</div>
 		</div>
@@ -889,14 +889,15 @@ export default function Home() {
 									<p
 										style={{
 											fontFamily: "var(--font-body)",
-											color: "#c9a96e",
-											fontSize: "clamp(0.58rem,1.2vw,0.72rem)",
+											color: "#c79f54",
+											fontSize: "clamp(0.7rem,1.2vw,0.72rem)",
 											letterSpacing: "0.55em",
+											fontWeight: "bold",
 											textTransform: "uppercase",
 											marginBottom: "clamp(12px,2.5vw,24px)",
 										}}
 									>
-										суйу менен чакырабыз
+										Суйуу менен чакырабыз
 									</p>
 
 									<OrnamentBand />
@@ -995,8 +996,8 @@ export default function Home() {
 									<p
 										style={{
 											fontFamily: "var(--font-body)",
-											color: "rgba(201,104,128,0.6)",
-											fontSize: "clamp(0.58rem,1.1vw,0.7rem)",
+											color: "#c85572",
+											fontSize: "clamp(0.8rem,1.1vw,0.7rem)",
 											letterSpacing: "0.4em",
 											textTransform: "uppercase",
 										}}
@@ -1021,9 +1022,10 @@ export default function Home() {
 									<p
 										style={{
 											fontFamily: "var(--font-body)",
-											color: "rgba(201,169,110,0.5)",
-											fontSize: "0.6rem",
+											color: "#c8a461",
+											fontSize: "0.8rem",
 											letterSpacing: "0.3em",
+											fontWeight: "bold",
 											textTransform: "uppercase",
 										}}
 									>
@@ -1176,7 +1178,7 @@ export default function Home() {
 											fontWeight: 300,
 										}}
 									>
-										Бул өзгөчө кунду биз менен бирге өткөргуңузгө чакырабыз.
+										Бул өзгөчө кунду биз менен бирге өткөрууңузгө чакырабыз.
 										Сиздин катышуунуз — биз учун эң баалуу белек.
 									</p>
 								</Reveal>
