@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Great_Vibes, Cormorant_Garamond } from "next/font/google";
 import "./globals.css";
 
@@ -14,12 +14,16 @@ const cormorant = Cormorant_Garamond({
 	variable: "--font-body",
 });
 
+export const viewport: Viewport = {
+	themeColor: "#fce0e8",
+	colorScheme: "light",
+};
+
 export const metadata: Metadata = {
+	metadataBase: new URL("https://svadba-ecru-two.vercel.app"),
 	title: "Тагай менен Мээримдин үйлөнүү тоюна чакыруусу 💍",
 	description:
 		"Сүйүү менен тоюбузга чакырабыз! 5-апрель 2026 • Бишкек • UNO банкет залы",
-	themeColor: "#fce0e8",
-
 	openGraph: {
 		title: "Тагай менен Мээримдин үйлөнүү тоюна чакыруу 💍",
 		description:
@@ -47,7 +51,9 @@ export default function RootLayout({
 	return (
 		<html lang="ky" className={`${greatVibes.variable} ${cormorant.variable}`}>
 			<head>
-				<meta name="theme-color" content="#fce0e8" />
+				<meta name="color-scheme" content="light only" />
+				<meta name="supported-color-schemes" content="light" />
+				<style>{`* { color-scheme: light only !important; } :root { color-scheme: light only; }`}</style>
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="default" />
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />

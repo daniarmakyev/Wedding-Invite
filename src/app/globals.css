@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+	color-scheme: light only;
 	--font-script: "Great Vibes", cursive;
 	--font-body: "Cormorant Garamond", serif;
 }
@@ -10,6 +11,7 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
 html {
 	scroll-behavior: smooth;
 }
@@ -74,6 +76,7 @@ body {
 		opacity: 0;
 	}
 }
+
 @keyframes goldShimmer {
 	0% {
 		background-position: -200% center;
@@ -82,6 +85,7 @@ body {
 		background-position: 200% center;
 	}
 }
+
 @keyframes rotateSlow {
 	from {
 		transform: rotate(0deg);
@@ -90,6 +94,7 @@ body {
 		transform: rotate(360deg);
 	}
 }
+
 @keyframes pulseGlow {
 	0%,
 	100% {
@@ -99,6 +104,7 @@ body {
 		opacity: 1;
 	}
 }
+
 @keyframes floatY {
 	0%,
 	100% {
@@ -115,6 +121,7 @@ body {
 	z-index: 1;
 	animation: petalFall linear infinite;
 }
+
 .gold-shimmer-text {
 	background: linear-gradient(
 		90deg,
