@@ -162,9 +162,9 @@ export default function Countdown() {
 				flexWrap: "nowrap",
 			}}
 		>
-			<FlipUnit value={timeLeft.days} label="дней" />
-			<FlipUnit value={timeLeft.hours} label="часов" />
-			<FlipUnit value={timeLeft.minutes} label="минут" />
+			<FlipUnit value={timeLeft.days} label="күн" />
+			<FlipUnit value={timeLeft.hours} label="саат" />
+			<FlipUnit value={timeLeft.minutes} label="мүнөт" />
 			<FlipUnit value={timeLeft.seconds} label="секунд" />
 		</div>
 	);

@@ -12,32 +12,6 @@ import Reveal from "./components/Reveal";
 import Countdown from "./components/Countdown";
 import Petals from "./components/Petals";
 
-/* ─── GLOBAL STYLES (shimmer) ───────────────────────── */
-const GlobalStyles = () => (
-	<style>{`
-  @keyframes nameShimmer {
-    0%   { background-position: -300% center; }
-    100% { background-position: 300% center; }
-  }
-  @keyframes medallionPulse {
-    0%, 100% { box-shadow: 0 14px 55px rgba(201,104,128,0.3), inset 0 1px 0 rgba(255,255,255,0.95), 0 0 0 0px rgba(201,169,110,0); }
-    50%       { box-shadow: 0 14px 55px rgba(201,104,128,0.45), inset 0 1px 0 rgba(255,255,255,0.95), 0 0 30px 8px rgba(201,169,110,0.18); }
-  }
-  .name-shimmer {
-    background: linear-gradient(90deg, #c96880 30%, #ffe0b5 50%, #c96880 70%);
-    background-size: 350% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: nameShimmer 15s linear infinite;
-  animation-delay: 5s;
-  }
-  .medallion-pulse {
-    animation: medallionPulse 2s ease-in-out infinite;
-  }
-`}</style>
-);
-
 /* ─── SVG ATOMS ─────────────────────────────────────── */
 
 const FloralCorner = ({ style }: { style?: React.CSSProperties }) => (
@@ -406,6 +380,7 @@ const MonogramCircle = () => {
 				height: "clamp(260px,40vw,380px)",
 			}}
 		>
+			{/* внешнее кольцо — по часовой */}
 			<motion.div
 				style={{ position: "absolute", inset: 0, rotate: outerRotate }}
 			>
@@ -451,6 +426,7 @@ const MonogramCircle = () => {
 				</svg>
 			</motion.div>
 
+			{/* внутреннее кольцо — против часовой */}
 			<motion.div
 				style={{
 					position: "absolute",
@@ -498,55 +474,53 @@ const MonogramCircle = () => {
 				</svg>
 			</motion.div>
 
-			{/* медальон с пульсацией */}
+			{/* центральный медальон — неподвижен */}
 			<div
-				className="medallion-pulse"
 				style={{
-					width: "clamp(200px,28vw,250px)",
-					height: "clamp(200px,28vw,250px)",
+					width: "clamp(130px,20vw,168px)",
+					height: "clamp(130px,20vw,168px)",
 					borderRadius: "50%",
 					background:
-						"linear-gradient(145deg, rgba(253,232,238,0.98), rgba(249,214,222,0.95))",
-					border: "1px solid rgba(201,169,110,0.65)",
+						"linear-gradient(145deg, rgba(253,232,238,0.95), rgba(249,214,222,0.85))",
+					border: "1px solid rgba(201,169,110,0.45)",
 					display: "flex",
 					flexDirection: "column",
 					alignItems: "center",
 					justifyContent: "center",
+					boxShadow:
+						"0 8px 40px rgba(201,104,128,0.18), inset 0 1px 0 rgba(255,255,255,0.9)",
 					position: "relative",
 					zIndex: 2,
-					padding: "0 15px",
 				}}
 			>
 				<div
 					style={{
 						position: "absolute",
-						inset: "10px",
+						inset: "8px",
 						borderRadius: "50%",
-						border: "1px solid rgba(201,169,110,0.4)",
+						border: "1px solid rgba(201,169,110,0.25)",
 					}}
 				/>
 				<span
 					className="font-script"
 					style={{
-						fontSize: "clamp(2.2rem,5vw,2.5rem)",
-						color: "#b94f6a",
-						lineHeight: 1.05,
+						fontSize: "clamp(1.3rem,3vw,2rem)",
+						color: "#c96880",
+						lineHeight: 1,
+						whiteSpace: "nowrap",
 						position: "relative",
 						zIndex: 1,
-						textShadow: "0 4px 12px rgba(201,104,128,0.38)",
-						textAlign: "center",
-						whiteSpace: "nowrap",
 					}}
 				>
 					Т &amp; М
 				</span>
 				<div
 					style={{
-						width: "65%",
-						height: "2px",
+						width: "55%",
+						height: "1px",
 						background:
 							"linear-gradient(90deg, transparent, #c9a96e, transparent)",
-						margin: "12px 0",
+						margin: "6px 0",
 						position: "relative",
 						zIndex: 1,
 					}}
@@ -554,16 +528,15 @@ const MonogramCircle = () => {
 				<span
 					style={{
 						fontFamily: "var(--font-body)",
-						fontSize: "clamp(1.2rem,2.2vw,1.5rem)",
-						letterSpacing: "0.45em",
-						color: "#b89652",
+						fontSize: "clamp(0.5rem,1vw,0.65rem)",
+						letterSpacing: "0.3em",
+						color: "#c9a96e",
 						textTransform: "uppercase",
-						fontWeight: 600,
 						position: "relative",
 						zIndex: 1,
 					}}
 				>
-					2026
+					2025
 				</span>
 			</div>
 		</div>
@@ -615,7 +588,7 @@ const GoldOrb = ({
 const MapEmbed = () => {
 	const LAT = 42.833421;
 	const LON = 74.542202;
-	const ZOOM = 18; // чуть выше для детализации
+	const ZOOM = 16;
 
 	const html = `<!DOCTYPE html>
 <html>
@@ -627,61 +600,72 @@ const MapEmbed = () => {
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
   html, body, #map { width:100%; height:100%; }
-  
-  /* УБРАЛИ старый фильтр — он и давал размытие */
-  .leaflet-tile-pane img {
-    image-rendering: crisp-edges;
-    image-rendering: -webkit-optimize-contrast;
-  }
-  
-  .leaflet-container {
-    background: #f8f1e9 !important;
-  }
-  
+  .leaflet-tile-pane { filter: saturate(0.7) sepia(0.15) hue-rotate(310deg) brightness(1.05); }
   .custom-pin { background: none; border: none; }
   .pin-inner {
     width: 36px; height: 36px; border-radius: 50% 50% 50% 0;
     background: linear-gradient(135deg, #c96880, #e8a0b0);
     transform: rotate(-45deg);
-    border: 3px solid #fff;
-    box-shadow: 0 6px 20px rgba(201,104,128,0.6);
+    border: 2px solid #fff;
+    box-shadow: 0 4px 16px rgba(201,104,128,0.5);
     display: flex; align-items: center; justify-content: center;
   }
-  .pin-dot { width: 12px; height: 12px; border-radius: 50%; background: #fff; transform: rotate(45deg); }
-  
-  .leaflet-popup-content-wrapper {
-    border-radius: 8px !important;
-    border: 2px solid rgba(201,169,110,0.5) !important;
-    box-shadow: 0 12px 40px rgba(201,104,128,0.25) !important;
+  .pin-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+    background: #fff; transform: rotate(45deg);
   }
+  .leaflet-popup-content-wrapper {
+    border-radius: 4px !important;
+    border: 1px solid rgba(201,169,110,0.4) !important;
+    box-shadow: 0 8px 32px rgba(201,104,128,0.2) !important;
+    font-family: Georgia, serif !important;
+    padding: 0 !important;
+  }
+  .leaflet-popup-content {
+    margin: 0 !important;
+    padding: 16px 20px !important;
+    font-size: 13px !important;
+    color: #8a5a40 !important;
+    line-height: 1.7 !important;
+  }
+  .popup-title {
+    font-size: 15px;
+    color: #c96880;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .popup-gold { color: #c9a96e; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; }
+  .leaflet-popup-tip { background: #fff !important; }
+  .leaflet-control-zoom a {
+    border: 1px solid rgba(201,169,110,0.4) !important;
+    color: #c9a96e !important;
+    font-size: 16px !important;
+  }
+  .leaflet-control-zoom a:hover { background: rgba(201,169,110,0.1) !important; }
+  .leaflet-attribution-flag { display: none !important; }
 </style>
 </head>
 <body>
 <div id="map"></div>
 <script>
-var map = L.map('map', { 
-  zoomControl: true, 
-  scrollWheelZoom: false, 
-  attributionControl: false 
-}).setView([${LAT}, ${LON}], ${ZOOM});
+var map = L.map('map', { zoomControl: true, scrollWheelZoom: false, attributionControl: true }).setView([${LAT}, ${LON}], ${ZOOM});
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-  maxZoom: 22,
-  detectRetina: true,        
-  tileSize: 256
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  attribution: '© OpenStreetMap',
+  maxZoom: 19,
 }).addTo(map);
 
-var pinIcon = L.divIcon({ 
-  className: 'custom-pin', 
-  html: '<div class="pin-inner"><div class="pin-dot"></div></div>', 
-  iconSize: [40,40], 
-  iconAnchor: [20,40], 
-  popupAnchor: [0,-42] 
+var pinIcon = L.divIcon({
+  className: 'custom-pin',
+  html: '<div class="pin-inner"><div class="pin-dot"></div></div>',
+  iconSize: [36, 36],
+  iconAnchor: [18, 36],
+  popupAnchor: [0, -38],
 });
 
 L.marker([${LAT}, ${LON}], { icon: pinIcon })
   .addTo(map)
-  .bindPopup('<div style="font-family:Georgia,serif;color:#5c3d4f">Банкетный зал <strong>UNO</strong><br>Камбар-Ата, 75</div>')
+  .bindPopup('<div class="popup-title">Банкет залы UNO</div><div class="popup-gold">Бишкек · 5-апрель 2026</div>')
   .openPopup();
 </script>
 </body>
@@ -691,13 +675,8 @@ L.marker([${LAT}, ${LON}], { icon: pinIcon })
 		<iframe
 			srcDoc={html}
 			width="100%"
-			style={{
-				border: 0,
-				display: "block",
-				height: "clamp(320px, 62vw, 680px)", // чуть выше для лучшей детализации
-				borderRadius: "3px",
-			}}
-			title="Банкетный зал UNO — карта"
+			style={{ border: 0, display: "block", height: "600px" }}
+			title="Банкет залы UNO"
 		/>
 	);
 };
@@ -728,27 +707,6 @@ const ParallaxLayer = ({
 	);
 };
 
-/* ─── TILT CARD — карточка с поворотом ─────────────── */
-const TiltCard = ({
-	children,
-	delay = 0,
-}: {
-	children: React.ReactNode;
-	delay?: number;
-}) => (
-	<Reveal delay={delay} direction="up">
-		<motion.div
-			initial={{ rotate: -2, opacity: 0 }}
-			whileInView={{ rotate: 0, opacity: 1 }}
-			viewport={{ once: true, margin: "-40px" }}
-			transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-			whileHover={{ y: -4, boxShadow: "0 16px 50px rgba(201,104,128,0.18)" }}
-		>
-			{children}
-		</motion.div>
-	</Reveal>
-);
-
 export default function Home() {
 	const [phase, setPhase] = useState<"envelope" | "flash" | "site">("envelope");
 
@@ -759,8 +717,6 @@ export default function Home() {
 
 	return (
 		<>
-			<GlobalStyles />
-
 			<AnimatePresence>
 				{phase === "envelope" && (
 					<motion.div
@@ -934,23 +890,26 @@ export default function Home() {
 										style={{
 											fontFamily: "var(--font-body)",
 											color: "#c9a96e",
-											fontSize: "clamp(0.68rem,1.3vw,0.82rem)",
+											fontSize: "clamp(0.58rem,1.2vw,0.72rem)",
 											letterSpacing: "0.55em",
 											textTransform: "uppercase",
 											marginBottom: "clamp(12px,2.5vw,24px)",
 										}}
 									>
-										с любовью приглашают вас
+										суйу менен чакырабыз
 									</p>
+
 									<OrnamentBand />
 
-									{/* ✨ Shimmer на именах */}
 									<h1
-										className="font-script name-shimmer"
+										className="font-script"
 										style={{
 											fontSize: "clamp(5rem,15vw,10.5rem)",
-											lineHeight: 1.3,
+											lineHeight: 0.95,
 											marginTop: "12px",
+											color: "#c96880",
+											textShadow:
+												"0 4px 30px rgba(201,104,128,0.2), 0 1px 0 rgba(255,255,255,0.8)",
 										}}
 									>
 										Тагай
@@ -995,15 +954,19 @@ export default function Home() {
 									</div>
 
 									<h1
-										className="font-script name-shimmer"
+										className="font-script"
 										style={{
 											fontSize: "clamp(5rem,15vw,10.5rem)",
 											lineHeight: 0.95,
 											marginBottom: "12px",
+											color: "#c96880",
+											textShadow:
+												"0 4px 30px rgba(201,104,128,0.2), 0 1px 0 rgba(255,255,255,0.8)",
 										}}
 									>
 										Мээрим
 									</h1>
+
 									<OrnamentBand />
 								</motion.div>
 
@@ -1027,19 +990,18 @@ export default function Home() {
 											color: "#c9a96e",
 										}}
 									>
-										5 апреля 2026
+										5-апрель 2026
 									</p>
 									<p
 										style={{
 											fontFamily: "var(--font-body)",
-											color: "#c96880",
-											fontSize: "clamp(0.9rem,1.8vw,1.2rem)",
-											letterSpacing: "0.25em",
+											color: "rgba(201,104,128,0.6)",
+											fontSize: "clamp(0.58rem,1.1vw,0.7rem)",
+											letterSpacing: "0.4em",
 											textTransform: "uppercase",
-											fontWeight: 500,
 										}}
 									>
-										Бишкек
+										Бишкек · Кыргызстан
 									</p>
 								</motion.div>
 
@@ -1065,7 +1027,7 @@ export default function Home() {
 											textTransform: "uppercase",
 										}}
 									>
-										листайте вниз
+										ылдый жылдырыңыз
 									</p>
 									<motion.div
 										animate={{ y: [0, 8, 0] }}
@@ -1084,7 +1046,7 @@ export default function Home() {
 								</motion.div>
 							</section>
 
-							{/* ══ MONOGRAM ══ */}
+							{/* ══ MONOGRAM BREAK ══ */}
 							<section
 								style={{
 									padding: "clamp(50px,8vw,90px) 24px",
@@ -1132,6 +1094,7 @@ export default function Home() {
 									opacity={0.05}
 									color="201,169,110"
 								/>
+
 								<div
 									style={{
 										position: "absolute",
@@ -1180,7 +1143,7 @@ export default function Home() {
 												lineHeight: 1,
 											}}
 										>
-											До нашего торжества
+											Тоюбузга чейин
 										</h2>
 										<ParallaxLayer speed={0.2}>
 											<RoseBranch
@@ -1210,13 +1173,14 @@ export default function Home() {
 											lineHeight: 2,
 											color: "#b07888",
 											fontStyle: "italic",
-											fontWeight: 400,
+											fontWeight: 300,
 										}}
 									>
-										Мы с радостью разделим этот особенный день с теми, кто нам
-										дорог. Ваше присутствие — самый дорогой подарок.
+										Бул өзгөчө кунду биз менен бирге өткөргуңузгө чакырабыз.
+										Сиздин катышуунуз — биз учун эң баалуу белек.
 									</p>
 								</Reveal>
+
 								<div
 									style={{
 										position: "absolute",
@@ -1243,6 +1207,7 @@ export default function Home() {
 							>
 								<SectionGoldLine />
 								<GoldOrb size={500} x="50%" y="50%" opacity={0.06} />
+
 								<div
 									style={{
 										position: "absolute",
@@ -1296,7 +1261,7 @@ export default function Home() {
 												lineHeight: 1,
 											}}
 										>
-											Детали торжества
+											Той жөнундө
 										</h2>
 										<FloralCorner
 											style={
@@ -1315,15 +1280,15 @@ export default function Home() {
 										maxWidth: "980px",
 										margin: "clamp(28px,5vw,52px) auto 0",
 										display: "grid",
-										gridTemplateColumns:
-											"repeat(auto-fit, minmax(min(100%, 270px), 1fr))",
+										gridTemplateColumns: "repeat(3, 1fr)",
+										alignItems: "stretch",
 										gap: "clamp(16px,2.5vw,28px)",
 									}}
 								>
 									{[
 										{
-											title: "Дата",
-											desc: "5 апреля 2026\nСуббота",
+											title: "Куну",
+											desc: "5-апрель 2026\nШейшемби",
 											icon: (
 												<svg
 													width="44"
@@ -1397,8 +1362,8 @@ export default function Home() {
 											),
 										},
 										{
-											title: "Время",
-											desc: "Церемония в 18:00",
+											title: "Убактысы",
+											desc: "Башталышы 17:00дө",
 											icon: (
 												<svg
 													width="44"
@@ -1467,8 +1432,8 @@ export default function Home() {
 											),
 										},
 										{
-											title: "Место",
-											desc: "Банкетный зал UNO\nБишкек | Улица Камбар-Ата, 75",
+											title: "Жери",
+											desc: "UNO банкет залы\nБишкек | Камбар-Ата көчөсу, 75",
 											icon: (
 												<svg
 													width="44"
@@ -1505,9 +1470,10 @@ export default function Home() {
 											),
 										},
 									].map(({ title, desc, icon }, i) => (
-										<TiltCard key={title} delay={i * 0.14}>
+										<Reveal key={title} delay={i * 0.14}>
 											<div
 												style={{
+													height: "100%",
 													background:
 														"linear-gradient(145deg, rgba(255,248,242,0.98), rgba(253,232,240,0.85))",
 													border: "1px solid rgba(201,169,110,0.3)",
@@ -1518,6 +1484,7 @@ export default function Home() {
 													overflow: "hidden",
 													boxShadow:
 														"0 8px 40px rgba(201,104,128,0.09), 0 0 0 4px rgba(201,169,110,0.05)",
+													boxSizing: "border-box",
 												}}
 											>
 												<div
@@ -1620,15 +1587,16 @@ export default function Home() {
 														lineHeight: 1.9,
 														fontSize: "clamp(0.9rem,1.6vw,1rem)",
 														whiteSpace: "pre-line",
-														fontWeight: 400,
+														fontWeight: 300,
 													}}
 												>
 													{desc}
 												</p>
 											</div>
-										</TiltCard>
+										</Reveal>
 									))}
 								</div>
+
 								<div
 									style={{
 										position: "absolute",
@@ -1662,6 +1630,7 @@ export default function Home() {
 									color="201,169,110"
 								/>
 								<GoldOrb size={350} x="20%" y="70%" opacity={0.05} />
+
 								<Reveal>
 									<div
 										style={{
@@ -1682,7 +1651,7 @@ export default function Home() {
 												lineHeight: 1,
 											}}
 										>
-											Как нас найти
+											Бизди кантип табуу
 										</h2>
 										<ParallaxLayer speed={0.2}>
 											<RoseBranch
@@ -1703,13 +1672,14 @@ export default function Home() {
 											marginBottom: "clamp(28px,5vw,48px)",
 										}}
 									>
-										Банкетный зал{" "}
+										Банкет залы{" "}
 										<span style={{ color: "#a07840", fontWeight: 500 }}>
 											UNO
 										</span>{" "}
 										· Бишкек
 									</p>
 								</Reveal>
+
 								<Reveal delay={0.2}>
 									<div
 										style={{
@@ -1735,6 +1705,7 @@ export default function Home() {
 										<MapEmbed />
 									</div>
 								</Reveal>
+
 								<Reveal delay={0.3}>
 									<a
 										href="https://go.2gis.com/sUlqD"
@@ -1775,9 +1746,10 @@ export default function Home() {
 												"0 8px 32px rgba(160,120,64,0.35), 0 0 0 1px rgba(201,169,110,0.3)";
 										}}
 									>
-										Открыть в 2GIS
+										2GIS ачуу
 									</a>
 								</Reveal>
+
 								<div
 									style={{
 										position: "absolute",
@@ -1804,6 +1776,7 @@ export default function Home() {
 							>
 								<SectionGoldLine />
 								<GoldOrb size={700} x="50%" y="50%" opacity={0.09} />
+
 								<div
 									style={{
 										position: "absolute",
@@ -1840,6 +1813,7 @@ export default function Home() {
 								>
 									<FloralCorner style={{ transform: "scale(-1,-1)" }} />
 								</div>
+
 								<ParallaxLayer
 									speed={0.25}
 									style={{
@@ -1865,49 +1839,58 @@ export default function Home() {
 										}}
 									/>
 								</ParallaxLayer>
+
 								<FullBorder />
 
 								<Reveal>
 									<p
 										style={{
 											fontFamily: "var(--font-body)",
-											color: "#a06878",
+											color: "rgba(201,104,128,0.5)",
 											fontSize: "clamp(0.56rem,1vw,0.68rem)",
 											letterSpacing: "0.55em",
 											textTransform: "uppercase",
 											marginBottom: "clamp(12px,2.5vw,24px)",
 										}}
 									>
-										свадьба
+										той
 									</p>
+
 									<OrnamentBand />
+
 									<h2
-										className="font-script name-shimmer"
+										className="font-script"
 										style={{
 											fontSize: "clamp(3.5rem,10vw,8rem)",
 											lineHeight: 0.95,
 											marginTop: "12px",
+											color: "#c96880",
+											textShadow:
+												"0 4px 40px rgba(201,104,128,0.22), 0 1px 0 rgba(255,255,255,0.8)",
 										}}
 									>
 										Тагай &amp; Мээрим
 									</h2>
+
 									<OrnamentBand />
+
 									<p
 										style={{
 											fontFamily: "var(--font-body)",
-											color: "#b07888",
-											fontWeight: 600,
-											fontSize: "clamp(0.7rem,1.3vw,0.82rem)",
+											color: "rgba(201,104,128,0.55)",
+											fontSize: "clamp(0.58rem,1.1vw,0.7rem)",
 											letterSpacing: "0.45em",
 											textTransform: "uppercase",
 											marginTop: "12px",
 										}}
 									>
-										5 апреля 2026 · Бишкек · UNO
+										5-апрель 2026 · Бишкек · UNO
 									</p>
+
 									<div style={{ marginTop: "clamp(28px,5vw,48px)" }}>
 										<MonogramCircle />
 									</div>
+
 									<p
 										className="font-script"
 										style={{
@@ -1917,7 +1900,7 @@ export default function Home() {
 											opacity: 0.8,
 										}}
 									>
-										Ждём вас с нетерпением
+										Сизди асыга кутуп жатабыз
 									</p>
 								</Reveal>
 							</footer>

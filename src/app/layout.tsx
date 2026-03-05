@@ -15,26 +15,26 @@ const cormorant = Cormorant_Garamond({
 });
 
 export const metadata: Metadata = {
-	title: "Приглашение на свадьбу Тагая и Мээрим",
+	title: "Тагай менен Мээримдин үйлөнүү тоюна чакыруусу 💍",
 	description:
-		"С большой любовью приглашаем вас на нашу свадьбу! 5 апреля 2026 • Бишкек • Банкетный зал UNO",
+		"Сүйүү менен тоюбузга чакырабыз! 5-апрель 2026 • Бишкек • UNO банкет залы",
 	themeColor: "#fce0e8",
 
 	openGraph: {
-		title: "Приглашение на свадьбу Тагая и Мээрим 💍",
+		title: "Тагай менен Мээримдин үйлөнүү тоюна чакыруу 💍",
 		description:
-			"5 апреля 2026 • Бишкек • Банкетный зал UNO. Ждём вас с нетерпением! 🌸",
+			"5-апрель 2026 • Бишкек • UNO банкет залы. Сизди күтүп жатабыз! 🌸",
 		url: "https://svadba-ecru-two.vercel.app/",
-		siteName: "Свадьба Тагая и Мээрим",
+		siteName: "Тагай менен Мээримдин тою",
 		images: [
 			{
 				url: "/weding.webp",
 				width: 1200,
 				height: 630,
-				alt: "Свадебное приглашение Тагая и Мээрим",
+				alt: "Тагай менен Мээримдин үйлөнүү той чакыруусу",
 			},
 		],
-		locale: "ru_RU",
+		locale: "ky_KG",
 		type: "website",
 	},
 };
@@ -45,14 +45,11 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="ru" className={`${greatVibes.variable} ${cormorant.variable}`}>
+		<html lang="ky" className={`${greatVibes.variable} ${cormorant.variable}`}>
 			<head>
-				{/* Цвет интерфейса Chrome/Safari */}
 				<meta name="theme-color" content="#fce0e8" />
 				<meta name="apple-mobile-web-app-capable" content="yes" />
 				<meta name="apple-mobile-web-app-status-bar-style" content="default" />
-
-				{/* Favicon — эмодзи кольца, не нужен файл */}
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 			</head>
 			<body>{children}</body>

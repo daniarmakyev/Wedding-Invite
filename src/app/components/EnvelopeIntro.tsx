@@ -72,7 +72,7 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 						exit={{ opacity: 0, y: -10 }}
 						transition={{ delay: 0.4, duration: 0.9 }}
 					>
-						Вам пришло приглашение
+						Сизге чакыруу келди
 					</motion.p>
 				)}
 			</AnimatePresence>
@@ -100,12 +100,15 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 						<p
 							className="font-script text-center"
 							style={{
-								color: "#b36175",
-								fontSize: "clamp(2rem, 2.5vw, 1.8rem)",
-								textShadow: "0 2px 8px rgba(255,255,255,0.3)",
+								color: "#af6275",
+								fontWeight: "bold",
+								fontSize: "clamp(1.3rem, 2.5vw, 1.2rem)",
+								fontFamily: "Great Vibes, var(--font-body)",
+								letterSpacing: "0.2em",
+								fontStyle: "italic",
 							}}
 						>
-							нажмите, чтобы открыть
+							Aчуу учун басыңыз
 						</p>
 						<motion.div
 							animate={{ y: [0, 6, 0] }}
