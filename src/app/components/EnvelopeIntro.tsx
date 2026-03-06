@@ -19,7 +19,7 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 
 	const handleVideoEnd = () => {
 		setPhase("flash");
-		setTimeout(() => onOpen(), 1400);
+		setTimeout(() => onOpen(), 730);
 	};
 
 	return (
@@ -34,7 +34,6 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 			exit={{ opacity: 0 }}
 			transition={{ duration: 0.5 }}
 		>
-			{/* Видео — на весь экран */}
 			<video
 				ref={videoRef}
 				src="/crop.mp4"
@@ -51,7 +50,6 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 				}}
 			/>
 
-			{/* Текст сверху — исчезает при нажатии */}
 			<AnimatePresence>
 				{phase === "idle" && (
 					<motion.p
@@ -62,7 +60,7 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 							left: 0,
 							right: 0,
 							color: "#b06175",
-							fontSize: "clamp(1.5rem, 3.5vw, 1.9rem)",
+							fontSize: "clamp(1.9rem, 3.5vw, 1.9rem)",
 							letterSpacing: "0.02em",
 							zIndex: 2,
 							textShadow: "0 2px 12px rgba(255,255,255,0.4)",
@@ -77,7 +75,6 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 				)}
 			</AnimatePresence>
 
-			{/* Подсказка снизу — исчезает при нажатии */}
 			<AnimatePresence>
 				{phase === "idle" && (
 					<motion.div
@@ -102,7 +99,7 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 							style={{
 								color: "#af6275",
 								fontWeight: "bold",
-								fontSize: "clamp(1.3rem, 2.5vw, 1.2rem)",
+								fontSize: "clamp(1.5rem, 2.5vw, 1.2rem)",
 								fontFamily: "Great Vibes, var(--font-body)",
 								letterSpacing: "0.2em",
 								fontStyle: "italic",
@@ -133,7 +130,6 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 				)}
 			</AnimatePresence>
 
-			{/* Вспышка при переходе */}
 			<AnimatePresence>
 				{phase === "flash" && (
 					<motion.div
@@ -148,7 +144,7 @@ export default function EnvelopeIntro({ onOpen }: EnvelopeIntroProps) {
 						initial={{ opacity: 0 }}
 						animate={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
-						transition={{ duration: 1.2, ease: "easeInOut" }}
+						transition={{ duration: 0.8, ease: "easeInOut" }}
 					/>
 				)}
 			</AnimatePresence>
