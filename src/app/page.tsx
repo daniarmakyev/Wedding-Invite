@@ -1594,7 +1594,7 @@ export default function Home() {
 												lineHeight: 1,
 											}}
 										>
-											Сизди күтүп жатабыз
+											Сизди кутуп жатабыз
 										</h2>
 										<ParallaxLayer speed={0.2}>
 											<RoseBranch
